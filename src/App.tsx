@@ -3,7 +3,10 @@ import { ColorModeProvider } from "./components/ui/color-mode";
 import Navbar from "./components/Navbar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import { useState } from "react";
+import { Genre } from "./Hooks/useGenres";
 function App() {
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   return (
     <ColorModeProvider>
       <Grid
@@ -17,10 +20,10 @@ function App() {
           <Navbar />
         </GridItem>
         <GridItem hideBelow="lg" area="aside" paddingX={5}>
-          <GenreList />
+          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
         </GridItem>
         <GridItem area="main">
-          <GameGrid />
+          <GameGrid selectedGenre={selectedGenre} />
         </GridItem>
       </Grid>
     </ColorModeProvider>

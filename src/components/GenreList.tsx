@@ -1,7 +1,10 @@
-import useGenres from "@/Hooks/useGenres";
+import useGenres, { Genre } from "@/Hooks/useGenres";
 import { HStack, Image, List, Spinner, Text } from "@chakra-ui/react";
 import getCroppedImageUrl from "./image-url";
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+const GenreList = ({ onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
   if (error) return null;
   if (isLoading) return <Spinner />;
@@ -20,7 +23,7 @@ const GenreList = () => {
               css={{
                 _hover: { cursor: "pointer", textDecoration: "underline" },
               }}
-              onClick={() => console.log(genre)}
+              onClick={() => onSelectGenre(genre)}
             >
               {genre.name}
             </Text>
