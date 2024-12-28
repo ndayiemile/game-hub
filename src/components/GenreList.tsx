@@ -15,7 +15,15 @@ const GenreList = () => {
               borderRadius={8}
               src={getCroppedImageUrl(genre.image_background)}
             />
-            <Text fontSize="lg">{genre.name}</Text>
+            <Text
+              fontSize="lg"
+              css={{
+                _hover: { cursor: "pointer", textDecoration: "underline" },
+              }}
+              onClick={() => console.log(genre)}
+            >
+              {genre.name}
+            </Text>
           </HStack>
         </List.Item>
       ))}

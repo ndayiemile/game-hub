@@ -1,4 +1,4 @@
-import { For, SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import useGames from "@/Hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
@@ -10,18 +10,16 @@ const GameGrid = () => {
     <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} padding={3} gap={3}>
       {isLoading &&
         skeletons.map((Skeleton) => (
-          <GameCardContainer>
-            <GameCardSkeleton key={Skeleton} />
+          <GameCardContainer key={Skeleton}>
+            <GameCardSkeleton />
           </GameCardContainer>
         ))}
       {error && <p>{error}</p>}
-      <For each={data}>
-        {(game) => (
-          <GameCardContainer>
-            <GameCard key={game.id} game={game} />
-          </GameCardContainer>
-        )}
-      </For>
+      {data.map((game) => (
+        <GameCardContainer key={game.id}>
+          <GameCard game={game} />
+        </GameCardContainer>
+      ))}
     </SimpleGrid>
   );
 };
