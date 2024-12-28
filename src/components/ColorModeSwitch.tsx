@@ -1,6 +1,6 @@
 import { useColorMode } from "@/components/ui/color-mode";
 import { Switch } from "@/components/ui/switch";
-import { HStack, Icon } from "@chakra-ui/react";
+import { HStack, Icon, Text } from "@chakra-ui/react";
 import { FaMoon, FaSun } from "react-icons/fa";
 const ColorModeSwitch = () => {
   const { toggleColorMode, colorMode } = useColorMode();
@@ -10,6 +10,7 @@ const ColorModeSwitch = () => {
         onChange={toggleColorMode}
         checked={colorMode === "dark"}
         colorPalette="black"
+        whiteSpace="nowrap"
         size="lg"
         trackLabel={{
           on: (
@@ -24,7 +25,7 @@ const ColorModeSwitch = () => {
           ),
         }}
       >
-        Dark Mode
+        <Text hideBelow="md">Dark Mode</Text>
       </Switch>
     </HStack>
   );
