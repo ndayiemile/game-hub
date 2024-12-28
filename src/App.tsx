@@ -2,6 +2,7 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import { ColorModeProvider } from "./components/ui/color-mode";
 import Navbar from "./components/Navbar";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 function App() {
   return (
     <ColorModeProvider>
@@ -12,7 +13,7 @@ function App() {
           <Navbar />
         </GridItem>
         <GridItem hideBelow="lg" area="aside">
-          Aside
+          <GenreList />
         </GridItem>
         <GridItem area="main">
           <GameGrid />
