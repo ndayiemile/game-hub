@@ -8,11 +8,15 @@ function App() {
     <ColorModeProvider>
       <Grid
         templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
+        templateColumns={{
+          base: "1fr",
+          lg: "200px 1fr",
+        }}
       >
         <GridItem area="nav">
           <Navbar />
         </GridItem>
-        <GridItem hideBelow="lg" area="aside">
+        <GridItem hideBelow="lg" area="aside" paddingX={5}>
           <GenreList />
         </GridItem>
         <GridItem area="main">

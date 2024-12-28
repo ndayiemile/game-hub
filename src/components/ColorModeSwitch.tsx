@@ -5,7 +5,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 const ColorModeSwitch = () => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
-    <HStack padding="10px">
+    <HStack px={3}>
       <Switch
         onChange={toggleColorMode}
         checked={colorMode === "dark"}
