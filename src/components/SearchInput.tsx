@@ -10,7 +10,7 @@ const SearchInput = ({ onSearch }: Props) => {
   return (
     <form
       style={{ width: "100%" }}
-      onChange={(event) => {
+      onSubmit={(event) => {
         event.preventDefault();
         if (ref.current) onSearch(ref.current.value);
       }}
