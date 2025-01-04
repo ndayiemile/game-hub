@@ -13,7 +13,7 @@ const usePlatforms = () =>
     queryFn: apiClient.getAll,
     refetchOnMount: false,
     staleTime: 24 * 60 * 60 * 1000, //24 hrs
-    initialData: { count: platforms.length, results: platforms },
+    initialData: { count: platforms.length, results: platforms, next: null },
     refetchOnWindowFocus: false,
   });
 export default usePlatforms;
