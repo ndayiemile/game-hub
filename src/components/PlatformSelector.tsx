@@ -6,8 +6,7 @@ import {
   MenuRoot,
   MenuTrigger,
 } from "@/components/ui/menu";
-import usePlatforms from "@/Hooks/usePlatforms";
-import { Platform } from "@/Hooks/useGames";
+import usePlatforms, { Platform } from "@/Hooks/usePlatforms";
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
   selectedPlatform: Platform | null;
