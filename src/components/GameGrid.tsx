@@ -1,10 +1,11 @@
-import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
-import useGames from "@/Hooks/useGames";
-import GameCard from "./GameCard";
-import GameCardSkeleton from "./GameCardSkeleton";
-import GameCardContainer from "./GameCardContainer";
 import { GameQuery } from "@/App";
-import React from "react";
+import useGames from "@/Hooks/useGames";
+import { SimpleGrid, Text } from "@chakra-ui/react";
+import React, { Fragment } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import GameCard from "./GameCard";
+import GameCardContainer from "./GameCardContainer";
+import GameCardSkeleton from "./GameCardSkeleton";
 interface Props {
   gameQuery: GameQuery;
 }
@@ -17,17 +18,26 @@ const GameGrid = ({ gameQuery }: Props) => {
     fetchNextPage,
     hasNextPage,
   } = useGames(gameQuery);
+  const fetchedGamesCount =
+    data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
   const skeletons = [1, 2, 3, 4, 5, 6];
+  const showSkeletons = () => {
+    return skeletons.map((Skeleton) => (
+      <GameCardContainer key={Skeleton}>
+        <GameCardSkeleton />
+      </GameCardContainer>
+    ));
+  };
   if (error) return <Text>{error.message}</Text>;
   return (
-    <Box padding={3}>
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} gap={6}>
-        {isLoading &&
-          skeletons.map((Skeleton) => (
-            <GameCardContainer key={Skeleton}>
-              <GameCardSkeleton />
-            </GameCardContainer>
-          ))}
+    <InfiniteScroll
+      dataLength={fetchedGamesCount}
+      next={() => fetchNextPage()}
+      hasMore={!!hasNextPage}
+      loader={<Fragment />}
+    >
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} padding={3} gap={6}>
+        {isLoading && showSkeletons()}
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page.results.map((game) => (
@@ -37,18 +47,9 @@ const GameGrid = ({ gameQuery }: Props) => {
             ))}
           </React.Fragment>
         ))}
+        {isFetchingNextPage && showSkeletons()}
       </SimpleGrid>
-      {hasNextPage && (
-        <Button
-          bg="gray.900"
-          color="gray.400"
-          onClick={() => fetchNextPage()}
-          my={5}
-        >
-          {isFetchingNextPage ? "Loading..." : "Load More"}
-        </Button>
-      )}
-    </Box>
+    </InfiniteScroll>
   );
 };
 
