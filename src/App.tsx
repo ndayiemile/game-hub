@@ -1,6 +1,5 @@
 import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
 import { useState } from "react";
-import { Platform } from "./Hooks/usePlatforms";
 import GameGrid from "./components/GameGrid";
 import GameHeading from "./components/GameHeading";
 import GenreList from "./components/GenreList";
@@ -10,7 +9,7 @@ import SortSelector from "./components/SortSelector";
 import { ColorModeProvider } from "./components/ui/color-mode";
 export interface GameQuery {
   genreId?: number;
-  platform: Platform | null;
+  platformId?: number;
   sortOrder: string;
   searchText: string;
 }
@@ -46,9 +45,9 @@ function App() {
             <Flex mb={5}>
               <Box mr={5}>
                 <PlatformSelector
-                  selectedPlatform={gameQuery.platform}
-                  onSelectPlatform={(platform) =>
-                    setGameQuery({ ...gameQuery, platform })
+                  selectedPlatformId={gameQuery.platformId}
+                  onSelectPlatform={(platformId) =>
+                    setGameQuery({ ...gameQuery, platformId })
                   }
                 />
               </Box>
