@@ -6,11 +6,10 @@ import {
   MenuTrigger,
 } from "@/components/ui/menu";
 import { BsChevronDown } from "react-icons/bs";
-interface Props {
-  onSelectSortOrder: (sortOrder: string) => void;
-  sortOrder: string;
-}
-const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
+import useGameQueryStore from "@/store";
+const SortSelector = () => {
+  const selectedSortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
+  const setSelectedSortOrder = useGameQueryStore((s) => s.setSortOrder);
   const sortOrders = [
     { value: "", label: "Relevance" },
     { value: "-added", label: "Date added" },
@@ -20,7 +19,7 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
     { value: "-rating", label: "Average rating" },
   ];
   const currentSortOrder = sortOrders.find(
-    (order) => order.value === sortOrder
+    (order) => order.value === selectedSortOrder
   );
   return (
     <MenuRoot>
@@ -32,7 +31,7 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
       <MenuContent>
         {sortOrders.map((order) => (
           <MenuItem
-            onClick={() => onSelectSortOrder(order.value)}
+            onClick={() => setSelectedSortOrder(order.value)}
             value={order.value}
           >
             {order.label}{" "}
