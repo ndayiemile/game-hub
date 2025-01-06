@@ -4,8 +4,8 @@ import { BsSearch } from "react-icons/bs";
 import { useRef } from "react";
 import useGameQueryStore from "@/store";
 import { useNavigate } from "react-router-dom";
-const navigate = useNavigate();
 const SearchInput = () => {
+  const navigate = useNavigate();
   const setSearchText = useGameQueryStore((s) => s.setSearchText);
   const ref = useRef<HTMLInputElement>(null);
   return (

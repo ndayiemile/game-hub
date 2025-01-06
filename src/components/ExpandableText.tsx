@@ -10,8 +10,8 @@ const ExpandableText = ({ children, limit, placeholder }: Props) => {
   if (!children) return null;
   if (children.length <= limit) return <Text>{children}</Text>;
   const summary = expanded
-    ? children.substring(0, limit) + placeholder
-    : children;
+    ? children
+    : children.substring(0, limit) + placeholder;
   return (
     <Text>
       {summary}
