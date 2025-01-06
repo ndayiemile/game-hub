@@ -6,6 +6,7 @@ const useTrailers = (gameId: number) => {
   return useQuery({
     queryKey: ["trailers", gameId],
     queryFn: apiClient.getAll,
+    refetchOnWindowFocus: false,
   });
 };
 export default useTrailers;

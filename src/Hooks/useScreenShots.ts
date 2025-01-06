@@ -6,6 +6,7 @@ const useScreenshots = (gameId: number) => {
   return useQuery({
     queryKey: ["screenshots", gameId],
     queryFn: apiClient.getAll,
+    refetchOnWindowFocus: false,
   });
 };
 export default useScreenshots;

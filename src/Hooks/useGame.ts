@@ -6,5 +6,6 @@ const useGame = (slug: string) =>
   useQuery({
     queryKey: ["games", slug],
     queryFn: () => apiClient.get(slug),
+    refetchOnWindowFocus: false,
   });
 export default useGame;
