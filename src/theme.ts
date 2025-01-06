@@ -1,5 +1,19 @@
-import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
-
+import {
+  createSystem,
+  defaultConfig,
+  defineAnimationStyles,
+  defineConfig,
+} from "@chakra-ui/react";
+const animationStyles = defineAnimationStyles({
+  bounceFadeIn: {
+    value: {
+      animationName: "bounce, fade-in",
+      animationDuration: "1s",
+      animationTimingFunction: "ease-in-out",
+      animationIterationCount: "infinite",
+    },
+  },
+});
 const config = defineConfig({
   theme: {
     tokens: {
@@ -18,6 +32,7 @@ const config = defineConfig({
         },
       },
     },
+    animationStyles,
   },
 });
 
