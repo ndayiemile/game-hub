@@ -4,6 +4,8 @@
 
 A video game discovery platform built with React and TypeScript. This project demonstrates modern frontend patterns including layered architecture, server/client state separation, and type-safe API integration. Built while learning React through tutorials, it showcases practical application of React hooks, state management, and component composition.
 
+![Game Hub Screenshot](./public/screenshot.png)
+
 ---
 
 ## What It Does
@@ -181,12 +183,21 @@ src/
    npm install
    ```
 
-3. Start the dev server:
+3. Set up environment variables (optional):
+   
+   Create a `.env` file in the root directory:
+   ```bash
+   VITE_RAWG_API_KEY=your_api_key_here
+   ```
+   
+   Get a free API key at [rawg.io/apidocs](https://rawg.io/apidocs).
+
+4. Start the dev server:
    ```bash
    npm run dev
    ```
 
-4. Open [http://localhost:5173](http://localhost:5173)
+5. Open [http://localhost:5173](http://localhost:5173)
 
 ### Available Scripts
 
@@ -194,10 +205,6 @@ src/
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build locally
 - `npm run lint` - Run ESLint
-
-### API Key
-
-The app uses the RAWG API. An API key is included for demo purposes, but you can get your own free key at [rawg.io/apidocs](https://rawg.io/apidocs) if needed.
 
 ---
 
