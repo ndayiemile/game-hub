@@ -2,7 +2,7 @@
 
 **Live Demo:** [https://game-hub-dun-kappa.vercel.app](https://game-hub-dun-kappa.vercel.app)
 
-A video game discovery platform built with React and TypeScript. This project demonstrates modern frontend patterns including layered architecture, server/client state separation, and type-safe API integration. Built while learning React through tutorials, it showcases practical application of React hooks, state management, and component composition.
+A video game discovery platform built with React and TypeScript. This project demonstrates modern frontend patterns including layered architecture, server/client state separation, and type-safe API integration.
 
 ![Game Hub Screenshot](./public/screenshot.png)
 
